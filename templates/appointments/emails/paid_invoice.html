@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>{{ subject }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+
+<body>
+        <table style="width:80%; border: 1px solid black;border-color: #96D4D4;">
+        <thead>
+            <tr>
+                <th style="width:20%; text-align: center; "> Patient Name </th>
+                <th style="width:20%; text-align: center; ">Appointment Date </th>
+                <th style="width:20%; text-align: center; ">Appointment Time </th>
+                <th style="width:30%; text-align: center; ">Appointment Reason</th>
+                <th style="width:5%; text-align: center; "> Bill Amount </th>
+                <th style="width:5%; text-align: center; ">Payment Status </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="width:20%; text-align: center; "> {{ appointment.appointment_patient }} </td>
+                <td style="width:20%; text-align: center; "> {{ appointment.appointment_date }} </td>
+                <td style="width:20%; text-align: center; "> {{ appointment.appointment_time }} </td>
+                <td style="width:30%; text-align: center; "> {{ appointment.appointment_reason }} </td>
+                <td style="width:5%; text-align: center; "> {{ appointment.appointment_bill }} </td>
+                <td style="width:5%; text-align: center; "> {% if appointment.paid %} Paid {% else %} Unpaid {% endif %} </td>
+            </tr>
+        </tbody>
+        </table>
+</body>
+
+</html>

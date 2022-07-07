@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block main %}
+<form method="POST">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+    var options = {
+        key: "{{ razorpay_key }}",
+        amount: "{{ appointment.appointment_bill }}",
+        currency: "INR",
+        name: "Pay Bill",
+        description: "Test Transaction",
+        image: "https://example.com/your_logo",
+        order_id: "{{ appointment.payment.provider_order_id}}",
+        callback_url: "{{ callback_url }}/{{ user.id }}/{{ appointment.id }}",
+        redirect: true,
+        prefill: {
+            "name": "{{ user.first_name }}  {{user.last_name }}",
+            "email": "{{ user.email }}",
+            "contact": "8147364905"
+        },
+        notes: {
+            "address": "Razorpay Corporate Office"
+        },
+        theme: {
+            "color": "#3399cc"
+        }
+    };
+    var rzp1 = new Razorpay(options);
+    rzp1.open();
+    </script>
+    <input type="hidden" custom="Hidden Element" name="hidden">
+</form>
+{% endblock %}

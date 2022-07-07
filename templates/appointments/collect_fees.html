@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Home {% endblock %}
+{% block main %}
+    <!-- Shopping Cart Section Begin -->
+    <section class="checkout-section spad">
+        <div class="container">
+            <form method="POST" class="checkout-form">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <label for="street">payment Option<span>*</span></label>
+                                {{ form.payment_option }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="place-order">
+                            <div class="order-total">
+
+                                <div class="order-btn">
+                                    <input type="submit" class="site-btn place-btn" value="Place Order">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <!-- Shopping Cart Section End -->
+
+{% endblock %}
