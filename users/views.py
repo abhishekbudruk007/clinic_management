@@ -8,6 +8,11 @@ from.models import CustomUsers
 from django.contrib.auth.hashers import make_password,check_password
 import os
 from django.conf import settings
+
+
+import boto3
+from botocore.exceptions import NoCredentialsError
+
 from clinic.utils import send_an_email
 # Create your views here.
 def login(request):
@@ -84,16 +89,11 @@ def change_password(request):
 
 
 
-import boto3
-from botocore.exceptions import NoCredentialsError
-
-ACCESS_KEY = 'AKIA5R5UV6XBCFXPRLXT'
-SECRET_KEY = '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'
 
 
 def upload_to_aws(local_file, bucket, s3_file):
-    s3 = boto3.client('s3', aws_access_key_id=ACCESS_KEY,
-                      aws_secret_access_key=SECRET_KEY)
+    s3 = boto3.client('s3', aws_access_key_id=settings.ACCESS_KEY,
+                      aws_secret_access_key=settings.SECRET_KEY)
     try:
         s3.upload_file(local_file, bucket, s3_file)
         print("Upload Successful")
